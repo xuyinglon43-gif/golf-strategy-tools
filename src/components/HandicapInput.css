@@ -1,0 +1,39 @@
+.handicap-badge {
+  background: var(--bg-card);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color 0.2s;
+}
+.handicap-badge:hover {
+  border-color: var(--accent);
+}
+.handicap-badge strong {
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.handicap-edit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.handicap-input {
+  width: 52px;
+  padding: 4px 8px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-input);
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+}
+.handicap-input:focus {
+  box-shadow: 0 0 0 2px rgba(154, 123, 60, 0.3);
+}

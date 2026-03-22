@@ -1,0 +1,37 @@
+.about {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.about h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+.about-section {
+  margin-bottom: 28px;
+}
+.about-section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.about-section p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 15px;
+}
+.about-section ul {
+  list-style: none;
+  padding: 0;
+}
+.about-section li {
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 4px 0;
+}
+.about-section li::before {
+  content: '·';
+  margin-right: 8px;
+  color: var(--accent);
+}

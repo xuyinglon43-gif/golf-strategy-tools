@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap');
+
+:root {
+  --bg-dark: #1a1a18;
+  --bg-card: #242422;
+  --border: #333;
+  --text-primary: #e8e6e0;
+  --text-secondary: #999;
+  --accent: #9a7b3c;
+  --accent-hover: #b8932e;
+  --green: #2a7d46;
+  --green-bg: rgba(42, 125, 70, 0.15);
+  --yellow: #b8931a;
+  --yellow-bg: rgba(184, 147, 26, 0.15);
+  --red: #ab2d2d;
+  --red-bg: rgba(171, 45, 45, 0.15);
+  --water: #1a5a8a;
+  --bunker: #c4a84a;
+  --radius-card: 14px;
+  --radius-btn: 9px;
+  --radius-input: 11px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+input, select {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

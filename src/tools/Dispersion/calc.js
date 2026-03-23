@@ -20,11 +20,11 @@ function randn() {
 
 export function generateSamples(aimX, aimY, spread, count = 2000) {
   const samples = []
-  const biasY = spread.y * 0.15 // shift short
+  const biasY = spread.y * 0.15
   for (let i = 0; i < count; i++) {
     samples.push({
       x: aimX + randn() * spread.x,
-      y: aimY + randn() * spread.y + biasY, // positive = toward golfer = short
+      y: aimY + randn() * spread.y + biasY,
     })
   }
   return samples
@@ -33,19 +33,23 @@ export function generateSamples(aimX, aimY, spread, count = 2000) {
 export function classifySample(x, y, scene) {
   const { green, hazards } = scene
 
-  // Check hazards first
   for (const h of hazards) {
     if (h.type === 'water' || h.type === 'cliff') {
-      if (pointInPolygon(x, y, h.path)) return h.type
+      if (h.path) {
+        if (pointInPolygon(x, y, h.path)) return h.type
+      } else if (h.cx !== undefined) {
+        if (pointInEllipse(x, y, h.cx, h.cy, h.rx, h.ry)) return h.type
+      }
     } else if (h.type === 'bunker') {
       if (pointInEllipse(x, y, h.cx, h.cy, h.rx, h.ry)) return 'bunker'
+    } else if (h.type === 'tree') {
+      const r = h.r || 12
+      if ((x - h.cx) ** 2 + (y - h.cy) ** 2 <= r * r) return 'rough'
     }
   }
 
-  // Check green
   if (pointInEllipse(x, y, green.cx, green.cy, green.rx, green.ry)) return 'green'
 
-  // Check rough (far from green) vs fairway (near green)
   const dist = Math.sqrt(((x - green.cx) / green.rx) ** 2 + ((y - green.cy) / green.ry) ** 2)
   if (dist < 1.8) return 'fairway'
   return 'rough'
@@ -67,7 +71,6 @@ function pointInPolygon(x, y, polygon) {
   return inside
 }
 
-// Canvas pixels to feet: green rx~80px ≈ 15 yards = 45ft → 1px ≈ 0.6ft
 const PX_TO_FEET = 0.6
 
 const PGA_PUTTS_TABLE = [
@@ -129,4 +132,32 @@ export function calcEV(result, handicap) {
     zones.fairway * fairwayPenalty +
     zones.rough * roughPenalty
   )
+}
+
+// Simulate EV for a single aim point (fewer samples for speed)
+function simulateEV(ax, ay, scene, flagPos, handicap, distIdx) {
+  const spread = getSpread(handicap, distIdx)
+  const samples = generateSamples(ax, ay, spread, 500)
+  const result = computeZones(samples, scene, flagPos, handicap)
+  return calcEV(result, handicap)
+}
+
+export function findBestAimPoint(scene, flagPos, handicap, distIdx) {
+  const gridStep = 8
+  const searchRadius = 80
+  const cx = scene.green.cx, cy = scene.green.cy
+  let bestEV = Infinity
+  let bestPoint = { x: cx, y: cy }
+
+  for (let x = cx - searchRadius; x <= cx + searchRadius; x += gridStep) {
+    for (let y = cy - searchRadius; y <= cy + searchRadius; y += gridStep) {
+      const ev = simulateEV(x, y, scene, flagPos, handicap, distIdx)
+      if (ev < bestEV) {
+        bestEV = ev
+        bestPoint = { x, y }
+      }
+    }
+  }
+
+  return { point: bestPoint, ev: bestEV }
 }

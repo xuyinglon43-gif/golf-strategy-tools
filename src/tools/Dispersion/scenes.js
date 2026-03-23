@@ -60,3 +60,43 @@ export const DISTANCE_OPTIONS = [
   { label: '180码', value: 180, index: 4 },
   { label: '200码', value: 200, index: 5 },
 ]
+
+const STORAGE_KEY = 'custom_greens'
+const MAX_LAYOUTS = 10
+
+export function loadCustomLayouts() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEY)
+    return data ? JSON.parse(data) : []
+  } catch {
+    return []
+  }
+}
+
+export function saveCustomLayout(layout) {
+  const layouts = loadCustomLayouts()
+  const existing = layouts.findIndex(l => l.id === layout.id)
+  if (existing >= 0) {
+    layouts[existing] = layout
+  } else {
+    if (layouts.length >= MAX_LAYOUTS) layouts.shift()
+    layouts.push(layout)
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(layouts))
+}
+
+export function deleteCustomLayout(id) {
+  const layouts = loadCustomLayouts().filter(l => l.id !== id)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(layouts))
+}
+
+export function makeDefaultCustomScene() {
+  return {
+    id: 'custom_' + Date.now(),
+    name: '自定义果岭',
+    desc: '你自己的果岭，你自己的策略',
+    green: { cx: 250, cy: 230, rx: 80, ry: 60 },
+    hazards: [],
+    pins: [{ id: 'custom', label: '旗位', x: 250, y: 230 }],
+  }
+}

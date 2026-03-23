@@ -33,6 +33,7 @@
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 .disp-btn {
   padding: 5px 12px;
@@ -52,6 +53,9 @@
   background: var(--accent);
   color: white;
   border-color: var(--accent);
+}
+.disp-btn-custom {
+  border-style: dashed;
 }
 
 .disp-content {
@@ -162,6 +166,257 @@
   margin-top: 6px;
 }
 
+/* Best aim point */
+.best-aim-section {
+  margin-bottom: 16px;
+}
+.best-aim-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+.best-aim-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.best-aim-result {
+  margin-top: 8px;
+  padding: 10px;
+  background: var(--bg-card);
+  border: 1px solid #ffd700;
+  border-radius: var(--radius-btn);
+  font-size: 13px;
+  text-align: center;
+}
+.best-aim-star {
+  color: #ffd700;
+  margin-right: 4px;
+}
+.best-aim-diff {
+  color: var(--text-secondary);
+  margin-left: 6px;
+  font-size: 12px;
+}
+
+/* Custom editor */
+.editor-wrap {
+  flex: 0 0 auto;
+  width: 50%;
+  max-width: 500px;
+}
+.editor-toolbar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.editor-tool-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.editor-tool-btn:hover {
+  border-color: var(--accent);
+}
+.editor-tool-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.editor-tool-icon {
+  font-size: 14px;
+}
+.editor-tool-label {
+  font-size: 11px;
+}
+
+.editor-canvas-wrap canvas {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--accent);
+  cursor: crosshair;
+  touch-action: none;
+  width: 100%;
+}
+
+.editor-size-controls {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.editor-size-controls label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  min-width: 32px;
+}
+.editor-size-controls input[type="range"] {
+  flex: 1;
+  min-width: 80px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+}
+.editor-size-controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+.editor-del-btn {
+  padding: 4px 10px;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: var(--radius-btn);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.editor-help {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+}
+.editor-help h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.editor-help ul {
+  list-style: none;
+  padding: 0;
+}
+.editor-help li {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 3px 0;
+  line-height: 1.6;
+}
+.editor-help li::before {
+  content: '·';
+  margin-right: 6px;
+  color: var(--accent);
+}
+
+/* Layout menu */
+.layout-menu-wrap {
+  position: relative;
+}
+.layout-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  padding: 6px;
+  min-width: 180px;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+.layout-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+}
+.layout-menu-name {
+  flex: 1;
+  text-align: left;
+  padding: 4px 8px;
+  background: none;
+  color: var(--text-primary);
+  border: none;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.layout-menu-name:hover {
+  background: var(--bg-dark);
+}
+.layout-menu-edit {
+  padding: 2px 6px;
+  background: none;
+  color: var(--text-secondary);
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+}
+.layout-menu-edit:hover {
+  color: var(--accent);
+}
+.layout-menu-del {
+  padding: 2px 6px;
+  background: none;
+  color: var(--text-secondary);
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.layout-menu-del:hover {
+  color: var(--red);
+}
+
+/* Save dialog */
+.save-dialog {
+  margin-top: 8px;
+  padding: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+}
+.save-input {
+  width: 100%;
+  padding: 6px 10px;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-input);
+  font-size: 13px;
+  outline: none;
+  margin-bottom: 8px;
+}
+.save-input:focus {
+  border-color: var(--accent);
+}
+.save-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.custom-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 768px) {
   .disp-title {
     font-size: 20px;
@@ -175,5 +430,14 @@
   }
   .disp-stats {
     width: 100%;
+  }
+  .editor-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+  .editor-toolbar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
   }
 }

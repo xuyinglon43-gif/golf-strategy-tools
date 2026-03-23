@@ -87,6 +87,7 @@ export default function GtoMatrix({ handicap, setHandicap }) {
         <div>
           <h1 className="gto-title">攻果岭GTO矩阵</h1>
           <p className="gto-sub">差点 {handicap} · 横轴=距离 · 纵轴=果岭风险 · 交叉格=决策</p>
+          <p className="gto-desktop-hint">推荐电脑端学习，建立策略直觉后带上球场</p>
         </div>
         <div className="gto-actions">
           <button className="gto-btn" onClick={() => setShowReorder(true)}>调整顺序</button>

@@ -18,6 +18,11 @@
 .gto-sub {
   color: var(--text-secondary);
   font-size: 14px;
+}
+.gto-desktop-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.6;
   margin-top: 4px;
 }
 .gto-actions {

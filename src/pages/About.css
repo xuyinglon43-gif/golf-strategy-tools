@@ -35,3 +35,12 @@
   margin-right: 8px;
   color: var(--accent);
 }
+.xiaohongshu-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--accent);
+  font-size: 14px;
+}
+.xiaohongshu-link:hover {
+  color: var(--accent-hover);
+}

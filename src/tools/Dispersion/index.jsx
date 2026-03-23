@@ -367,6 +367,7 @@ export default function Dispersion({ handicap, setHandicap }) {
     <div className="disp-page">
       <h1 className="disp-title no-print">散布圈策略模拟器</h1>
       <p className="disp-sub no-print">差点 {handicap} · {editing ? '编辑果岭布局' : '拖动红色瞄准点，观察散布变化'}</p>
+      <p className="disp-desktop-hint no-print">推荐电脑端学习，建立策略直觉后带上球场</p>
 
       <div className="disp-controls no-print">
         <div className="disp-control-group">

@@ -27,7 +27,12 @@ export default function About() {
 
       <section className="about-section">
         <h2>作者</h2>
-        <p>许多帕 × Claude</p>
+        <p>
+          @许多帕 × Claude<br />
+          <a href="https://xhslink.com/m/6sZqG7sfKMY" target="_blank" rel="noopener noreferrer" className="xiaohongshu-link">
+            小红书：@许多帕
+          </a>
+        </p>
       </section>
 
       <section className="about-section">

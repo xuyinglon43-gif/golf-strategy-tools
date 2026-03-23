@@ -50,6 +50,7 @@ export default function Home() {
       <section className="hero">
         <h1 className="hero-title">理解你的概率，做+EV的决策</h1>
         <p className="hero-sub">你不能选起手牌，但可以选怎么打</p>
+        <p className="hero-hint">推荐使用电脑学习 · 打球前的策略课，不是下场时的计算器</p>
       </section>
       <section className="tool-grid">
         {tools.map((tool) => (

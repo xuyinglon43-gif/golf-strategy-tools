@@ -33,11 +33,11 @@ export default function Dispersion({ handicap, setHandicap }) {
     if (handicap === null) return
     const spread = getSpread(handicap, distIdx)
     const samples = generateSamples(aimX, aimY, spread)
-    const z = computeZones(samples, scene)
-    setZones(z)
-    setEv(calcEV(z, handicap))
+    const result = computeZones(samples, scene, pinPos, handicap)
+    setZones(result.zones)
+    setEv(calcEV(result, handicap))
     return { samples, spread }
-  }, [handicap, distIdx, aimX, aimY, scene])
+  }, [handicap, distIdx, aimX, aimY, scene, pinPos])
 
   // Draw canvas
   useEffect(() => {
@@ -52,9 +52,9 @@ export default function Dispersion({ handicap, setHandicap }) {
 
     const spread = getSpread(handicap, distIdx)
     const samples = generateSamples(aimX, aimY, spread)
-    const z = computeZones(samples, scene)
-    setZones(z)
-    setEv(calcEV(z, handicap))
+    const result = computeZones(samples, scene, pinPos, handicap)
+    setZones(result.zones)
+    setEv(calcEV(result, handicap))
 
     // Background
     ctx.fillStyle = '#1e3a12'
@@ -222,7 +222,7 @@ export default function Dispersion({ handicap, setHandicap }) {
     return <HandicapPrompt onSet={setHandicap} />
   }
 
-  const evColor = ev < 0.5 ? 'var(--green)' : ev < 1.2 ? 'var(--yellow)' : 'var(--red)'
+  const evColor = ev < 0 ? 'var(--green)' : ev < 0.5 ? 'var(--green)' : ev < 1.2 ? 'var(--yellow)' : 'var(--red)'
   const safeZone = zones ? (zones.green + zones.fairway) : 0
 
   return (
@@ -288,7 +288,7 @@ export default function Dispersion({ handicap, setHandicap }) {
           <div className="disp-ev-card">
             <div className="disp-ev-label">预期额外杆数</div>
             <div className="disp-ev-value" style={{ color: evColor }}>
-              +{ev.toFixed(2)}
+              {ev >= 0 ? '+' : ''}{ev.toFixed(2)}
             </div>
           </div>
 

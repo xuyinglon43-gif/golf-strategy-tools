@@ -27,6 +27,14 @@ const tools = [
     icon: '🏌️',
   },
   {
+    id: 'expected',
+    name: '期望成绩计算器',
+    desc: '告诉你在这个球场应该打多少杆',
+    path: '/expected',
+    available: true,
+    icon: '🧮',
+  },
+  {
     id: 'roadmap',
     name: '差点路线图',
     desc: '告诉你该练什么能最快降差点',

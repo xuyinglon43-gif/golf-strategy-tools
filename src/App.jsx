@@ -6,6 +6,7 @@ import About from './pages/About'
 import GtoMatrix from './tools/GtoMatrix'
 import Dispersion from './tools/Dispersion'
 import Putting from './tools/Putting'
+import Expected from './tools/Expected'
 
 function App() {
   const [handicap, setHandicap] = useState(() => {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/gto" element={<GtoMatrix handicap={handicap} setHandicap={setHandicap} />} />
         <Route path="/dispersion" element={<Dispersion handicap={handicap} setHandicap={setHandicap} />} />
         <Route path="/putting" element={<Putting handicap={handicap} setHandicap={setHandicap} />} />
+        <Route path="/expected" element={<Expected handicap={handicap} setHandicap={setHandicap} />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Layout>

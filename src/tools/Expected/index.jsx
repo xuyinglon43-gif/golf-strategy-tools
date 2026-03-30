@@ -53,6 +53,8 @@ export default function Expected({ handicap, setHandicap }) {
   const [submitPar, setSubmitPar] = useState(72)
   const [submitRating, setSubmitRating] = useState('')
   const [submitSlope, setSubmitSlope] = useState('')
+  const [submitTee, setSubmitTee] = useState('')
+  const [submitYardage, setSubmitYardage] = useState('')
   const [submitStatus, setSubmitStatus] = useState(null) // 'success' | 'error' | null
   const [submitMsg, setSubmitMsg] = useState('')
   const [submitting, setSubmitting] = useState(false)
@@ -149,6 +151,8 @@ export default function Expected({ handicap, setHandicap }) {
         par: data.par,
         rating: data.rating,
         slope: data.slope,
+        tee: submitTee.trim() || null,
+        yardage: parseInt(submitYardage, 10) || null,
       })
       if (error) throw error
       setSubmitStatus('success')
@@ -158,6 +162,8 @@ export default function Expected({ handicap, setHandicap }) {
       setSubmitPar(72)
       setSubmitRating('')
       setSubmitSlope('')
+      setSubmitTee('')
+      setSubmitYardage('')
     } catch (err) {
       setSubmitStatus('error')
       setSubmitMsg('提交失败，请稍后重试')
@@ -209,7 +215,7 @@ export default function Expected({ handicap, setHandicap }) {
                   {searchResults.map((c) => (
                     <div key={c.id} className="exp-dropdown-item" onClick={() => selectCourse(c)}>
                       <span className="exp-dropdown-name">{c.name}</span>
-                      <span className="exp-dropdown-city">{c.city}</span>
+                      <span className="exp-dropdown-city">{c.city}{c.tee ? ` · ${c.tee}Tee` : ''}{c.yardage ? ` · ${c.yardage}码` : ''}</span>
                       <span className={`exp-dropdown-badge ${c.status}`}>
                         {c.status === 'verified' ? '已验证' : '待验证'}
                       </span>
@@ -329,6 +335,33 @@ export default function Expected({ handicap, setHandicap }) {
                     placeholder="如：深圳"
                     value={submitCity}
                     onChange={(e) => setSubmitCity(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="exp-row2">
+                <div className="exp-field">
+                  <label className="exp-label">Tee 台</label>
+                  <select
+                    className="exp-input"
+                    value={submitTee}
+                    onChange={(e) => setSubmitTee(e.target.value)}
+                  >
+                    <option value="">选择 Tee 台</option>
+                    <option value="黑">黑 Tee</option>
+                    <option value="蓝">蓝 Tee</option>
+                    <option value="白">白 Tee</option>
+                    <option value="金">金 Tee</option>
+                    <option value="红">红 Tee</option>
+                  </select>
+                </div>
+                <div className="exp-field">
+                  <label className="exp-label">总码数</label>
+                  <input
+                    type="number"
+                    className="exp-input"
+                    placeholder="如 6800"
+                    value={submitYardage}
+                    onChange={(e) => setSubmitYardage(e.target.value)}
                   />
                 </div>
               </div>

@@ -1,4 +1,40 @@
+import { useState, useEffect } from 'react'
+import { supabase } from '../lib/supabase'
 import './About.css'
+
+function VisitorCounter() {
+  const [count, setCount] = useState(null)
+
+  useEffect(() => {
+    if (!supabase) return
+
+    const hasVisited = sessionStorage.getItem('golf_visited')
+
+    if (!hasVisited) {
+      // First visit this session: increment
+      supabase.rpc('increment_visit').then(({ data }) => {
+        if (data !== null) {
+          setCount(data)
+          sessionStorage.setItem('golf_visited', '1')
+        }
+      })
+    } else {
+      // Already visited: just read
+      supabase.from('site_stats').select('visit_count').eq('id', 'global').single().then(({ data }) => {
+        if (data) setCount(data.visit_count)
+      })
+    }
+  }, [])
+
+  if (count === null) return null
+
+  return (
+    <div className="visitor-counter">
+      <span className="visitor-icon">👥</span>
+      已有 <strong>{count.toLocaleString()}</strong> 位球友访问过这个工具箱
+    </div>
+  )
+}
 
 export default function About() {
   return (
@@ -42,6 +78,8 @@ export default function About() {
           所有计算基于统计平均值，个体差异请结合自身情况调整。
         </p>
       </section>
+
+      <VisitorCounter />
     </div>
   )
 }

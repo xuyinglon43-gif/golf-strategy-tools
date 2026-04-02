@@ -1,0 +1,87 @@
+name: Setup Umami Analytics on Alibaba Cloud
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H $HOST >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Install Docker and deploy Umami
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          ssh -i ~/.ssh/deploy_key $USER@$HOST 'bash -s' << 'SCRIPT'
+          set -e
+
+          # Install Docker if not present
+          if ! command -v docker &> /dev/null; then
+            echo "Installing Docker..."
+            curl -fsSL https://get.docker.com | sh
+            systemctl enable docker
+            systemctl start docker
+          fi
+
+          # Install Docker Compose plugin if not present
+          if ! docker compose version &> /dev/null; then
+            echo "Installing Docker Compose..."
+            apt-get update && apt-get install -y docker-compose-plugin
+          fi
+
+          # Create Umami directory
+          mkdir -p /opt/umami
+          cd /opt/umami
+
+          # Write docker-compose.yml
+          cat > docker-compose.yml << 'EOF'
+          version: '3'
+          services:
+            umami:
+              image: ghcr.io/umami-software/umami:postgresql-latest
+              ports:
+                - "3000:3000"
+              environment:
+                DATABASE_URL: postgresql://umami:umami_pass_2026@db:5432/umami
+                APP_SECRET: golf-tools-umami-secret-2026
+              depends_on:
+                db:
+                  condition: service_healthy
+              restart: always
+            db:
+              image: postgres:15-alpine
+              environment:
+                POSTGRES_DB: umami
+                POSTGRES_USER: umami
+                POSTGRES_PASSWORD: umami_pass_2026
+              volumes:
+                - umami-db-data:/var/lib/postgresql/data
+              restart: always
+              healthcheck:
+                test: ["CMD-SHELL", "pg_isready -U umami"]
+                interval: 5s
+                timeout: 5s
+                retries: 5
+          volumes:
+            umami-db-data:
+          EOF
+
+          # Start Umami
+          docker compose down 2>/dev/null || true
+          docker compose up -d
+
+          echo "Umami is starting on port 3000..."
+          echo "Default login: admin / umami"
+          echo "Access at http://$HOSTNAME:3000"
+          SCRIPT

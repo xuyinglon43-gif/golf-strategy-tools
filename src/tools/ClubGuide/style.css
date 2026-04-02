@@ -1,0 +1,347 @@
+/* Stage badge colors — adapt to theme */
+:root,
+[data-theme="dark"] {
+  --stage1-badge-bg: rgba(227, 75, 74, 0.15);
+  --stage1-badge-text: #f08080;
+  --stage2-badge-bg: rgba(239, 159, 39, 0.15);
+  --stage2-badge-text: #f0c060;
+  --stage4-badge-bg: rgba(76, 175, 114, 0.15);
+  --stage4-badge-text: #6fcf97;
+  --stage5-badge-bg: rgba(59, 143, 232, 0.15);
+  --stage5-badge-text: #7ab8f5;
+}
+[data-theme="light"] {
+  --stage1-badge-bg: #fcebeb;
+  --stage1-badge-text: #a32d2d;
+  --stage2-badge-bg: #faeeda;
+  --stage2-badge-text: #854f0b;
+  --stage4-badge-bg: #f0faf3;
+  --stage4-badge-text: #1e6b3a;
+  --stage5-badge-bg: #eef5fd;
+  --stage5-badge-text: #1a5ba8;
+}
+
+.club-guide {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.club-guide-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.club-guide-title {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent) 0%, #d4a84a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.club-guide-sub {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+.club-guide-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+/* Legend */
+.club-legend {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.legend-item {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.legend-core {
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+.legend-new {
+  background: rgba(59, 143, 232, 0.12);
+  color: #5ba0e0;
+  border: 1px solid #5ba0e0;
+}
+.legend-skip {
+  background: rgba(150, 150, 150, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  text-decoration: line-through;
+}
+.legend-later {
+  background: rgba(150, 150, 150, 0.06);
+  color: var(--text-secondary);
+  border: 1px dashed var(--border);
+}
+
+/* Stage cards */
+.stage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stage-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.stage-card.stage-current {
+  border-color: var(--stage-color);
+  box-shadow: 0 0 0 3px rgba(76, 175, 114, 0.12);
+}
+
+.stage-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.stage-color-bar {
+  width: 4px;
+  height: 28px;
+  border-radius: 2px;
+  background: var(--stage-color);
+  flex-shrink: 0;
+}
+.stage-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+.stage-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.stage-range {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.stage-you {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  margin-left: auto;
+}
+
+.stage-body {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 0;
+}
+
+.stage-clubs {
+  padding: 20px;
+  border-right: 1px solid var(--border);
+}
+.stage-signals {
+  padding: 20px;
+}
+
+.stage-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+/* Club tags */
+.club-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.club-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid;
+}
+.club-tag-label {
+  font-size: 10px;
+  opacity: 0.7;
+}
+.club-tag-core {
+  background: var(--green-bg);
+  border-color: var(--green);
+  color: var(--green);
+}
+.club-tag-new {
+  background: rgba(59, 143, 232, 0.12);
+  border-color: #5ba0e0;
+  color: #5ba0e0;
+}
+.club-tag-skip {
+  background: rgba(150, 150, 150, 0.08);
+  border-color: var(--border);
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+.club-tag-later {
+  background: rgba(150, 150, 150, 0.05);
+  border-color: var(--border);
+  border-style: dashed;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+[data-theme="light"] .club-tag-core {
+  background: #f0faf3;
+  color: #1e6b3a;
+  border-color: #a8d9b8;
+}
+[data-theme="light"] .club-tag-new {
+  background: #eef5fd;
+  color: #1a5ba8;
+  border-color: #9dc4f0;
+}
+[data-theme="light"] .club-tag-skip {
+  background: #f5f5f3;
+  color: #aeaaa2;
+  border-color: #dedbd5;
+}
+[data-theme="light"] .club-tag-later {
+  background: #f5f5f3;
+  color: #c5c2bb;
+  border-color: #dedbd5;
+}
+
+.stage-explanation {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Signals */
+.signal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.signal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+.signal-item:hover {
+  color: var(--text-primary);
+}
+.signal-item.signal-checked {
+  color: var(--green);
+}
+
+.signal-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.signal-checked .signal-circle {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+
+.signal-complete {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: var(--green-bg);
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green);
+  text-align: center;
+}
+
+.signal-custom {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Footer blocks */
+.club-guide-footer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 20px;
+}
+.footer-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+}
+.footer-block h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.footer-block p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .club-guide-title {
+    font-size: 22px;
+  }
+  .stage-body {
+    grid-template-columns: 1fr;
+  }
+  .stage-clubs {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .stage-header {
+    padding: 12px 16px;
+  }
+  .stage-clubs,
+  .stage-signals {
+    padding: 16px;
+  }
+  .stage-you {
+    margin-left: 0;
+  }
+}

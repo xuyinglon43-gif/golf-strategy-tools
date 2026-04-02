@@ -1,0 +1,150 @@
+export const stages = [
+  {
+    id: 1,
+    name: '刚开始打球',
+    range: '差点 35+',
+    minHandicap: 35,
+    maxHandicap: 54,
+    color: '#E24B4A',
+    badgeBg: 'var(--stage1-badge-bg)',
+    badgeText: 'var(--stage1-badge-text)',
+    clubs: [
+      { name: '一号木', status: 'core' },
+      { name: '7铁', status: 'core' },
+      { name: '8铁', status: 'core' },
+      { name: '9铁', status: 'core' },
+      { name: 'PW', status: 'core' },
+      { name: '56度', status: 'core' },
+      { name: '推杆', status: 'core' },
+      { name: '3–5铁', status: 'skip' },
+      { name: '球道木', status: 'skip' },
+      { name: '其余楔形杆', status: 'later' },
+    ],
+    explanation:
+      '7支杆足够打完一轮，多了反而添乱。长铁是全套杆里最难打的，职业球员都要练很久，新手拿起来十有八九是地滚或劈叉。球道木同理，从地面打需要极精准的击球点，先不用碰。不是你的问题，是这些杆本来就难。',
+    signals: [
+      '能用7铁稳定打出100码，不频繁薄击',
+      '成绩开始低于110杆',
+      '下场超过10次，建立起基本挥杆节奏',
+    ],
+  },
+  {
+    id: 2,
+    name: '突破100杆',
+    range: '差点 25–35',
+    minHandicap: 25,
+    maxHandicap: 34.9,
+    color: '#EF9F27',
+    badgeBg: 'var(--stage2-badge-bg)',
+    badgeText: 'var(--stage2-badge-text)',
+    clubs: [
+      { name: '一号木', status: 'core' },
+      { name: '6–9铁', status: 'core' },
+      { name: 'PW', status: 'core' },
+      { name: '56度', status: 'core' },
+      { name: '推杆', status: 'core' },
+      { name: '4号 Hybrid', status: 'new' },
+      { name: '5号 Hybrid', status: 'new' },
+      { name: '52度 Gap Wedge', status: 'new' },
+      { name: '3–5铁', status: 'skip' },
+      { name: '球道木', status: 'skip' },
+    ],
+    explanation:
+      '把长铁换成 Hybrid 是这个阶段最高回报的一步。Hybrid 杆底更宽、重心更低，打坏了还能飞起来，长铁打坏了就是地滚。Shot Scope 数据显示，这个差点段 Hybrid 的果岭命中率比等效长铁高出约 8%。同时加一根 52度 Gap Wedge，填补 PW（约46度）和56度之间的距离空白，100码以内会顺手很多。',
+    signals: [
+      '开球OB每场少于3个',
+      'Hybrid能稳定从球道打干净，不频繁劈叉',
+      '成绩稳定接近100杆',
+    ],
+  },
+  {
+    id: 3,
+    name: '稳定破90',
+    range: '差点 15–25',
+    minHandicap: 15,
+    maxHandicap: 24.9,
+    color: '#EF9F27',
+    badgeBg: 'var(--stage2-badge-bg)',
+    badgeText: 'var(--stage2-badge-text)',
+    clubs: [
+      { name: '一号木', status: 'core' },
+      { name: '4/5号 Hybrid', status: 'core' },
+      { name: '6–9铁', status: 'core' },
+      { name: 'PW', status: 'core' },
+      { name: '52度', status: 'core' },
+      { name: '推杆', status: 'core' },
+      { name: '56度专业款', status: 'new' },
+      { name: '60度', status: 'new' },
+      { name: '7号木', status: 'later' },
+      { name: '球道木', status: 'skip' },
+    ],
+    explanation:
+      '这个阶段你会发现：开球还行，就是上不了果岭；或者上了，又切不上去。数据显示，差点15–25的球员每场有13–15洞上不了果岭，救球率平均只有25%，等于大部分洞都在丢杆。所以这个阶段加杆的重点不是长杆，而是果岭周边的短杆。换一根好用的专业56度（注意选对 Bounce 角），加60度覆盖各种卡位，救球率会有实质提升，这比买球道木管用得多。',
+    signals: [
+      '救球率稳定超过30%',
+      '双柏忌每场少于5个',
+      '成绩稳定接近90杆',
+    ],
+  },
+  {
+    id: 4,
+    name: '冲击单差点',
+    range: '差点 6–15',
+    minHandicap: 6,
+    maxHandicap: 14.9,
+    color: '#4CAF72',
+    badgeBg: 'var(--stage4-badge-bg)',
+    badgeText: 'var(--stage4-badge-text)',
+    clubs: [
+      { name: '一号木', status: 'core' },
+      { name: '4/5号 Hybrid', status: 'core' },
+      { name: '6–9铁', status: 'core' },
+      { name: 'PW/52/56/60', status: 'core' },
+      { name: '推杆', status: 'core' },
+      { name: '一号木 Fitting', status: 'new' },
+      { name: '7号木', status: 'new' },
+      { name: '铁杆 Fitting', status: 'new' },
+      { name: '楔形杆精细化（每4–5度一根）', status: 'new' },
+      { name: '5号木', status: 'later' },
+    ],
+    explanation:
+      '到了这个阶段，装备开始真正影响成绩，因为动作已足够稳定，能感受到不同杆的细微差异。最值得做的一件事：专业 Fitting。铁杆杆身硬度、长度、Lie 角对方向的影响是系统性的，Fitting 不一定要换新杆，有时候只是参数调整就能看到变化。楔形杆精细化是这个阶段另一个高回报投资——每根之间差4–5度 loft，100码以内的距离分段会清晰很多。',
+    signals: [
+      'GIR 果岭命中率超过35%',
+      '救球率超过40%',
+      '推杆每洞平均低于1.85杆',
+    ],
+  },
+  {
+    id: 5,
+    name: '单差点及以上',
+    range: '差点 0–6',
+    minHandicap: 0,
+    maxHandicap: 5.9,
+    color: '#3B8FE8',
+    badgeBg: 'var(--stage5-badge-bg)',
+    badgeText: 'var(--stage5-badge-text)',
+    clubs: [
+      { name: '一号木', status: 'core' },
+      { name: '3号木', status: 'core' },
+      { name: '4/5号 Hybrid', status: 'core' },
+      { name: '4–9铁', status: 'core' },
+      { name: 'PW/52/56/60', status: 'core' },
+      { name: '推杆', status: 'core' },
+      { name: '长铁（可替换部分 Hybrid）', status: 'new' },
+      { name: '铁杆肌肉背或刀背', status: 'new' },
+      { name: '楔形杆全套 Fitting + Grind', status: 'new' },
+    ],
+    explanation:
+      '这个阶段没有统一答案，配包完全按自己的 Strokes Gained 弱点定制。SG: Approach 是弱点就在进攻距离段想办法；SG: Around the Green 是弱点就细化 Wedge 的 Grind 和 Bounce。铁杆换刀背或肌肉背的前提是击球够稳定，能驾驭更小的容错窗口——盲目换刀背只会让成绩更难看。',
+    signals: null,
+  },
+]
+
+export function getStageIndex(handicap) {
+  if (handicap >= 35) return 0
+  if (handicap >= 25) return 1
+  if (handicap >= 15) return 2
+  if (handicap >= 6) return 3
+  return 4
+}

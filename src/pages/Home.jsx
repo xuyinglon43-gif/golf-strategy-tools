@@ -35,6 +35,14 @@ const tools = [
     icon: '🧮',
   },
   {
+    id: 'club-guide',
+    name: '球杆配置路线图',
+    desc: '告诉你手里该有什么杆',
+    path: '/club-guide',
+    available: true,
+    icon: '🎒',
+  },
+  {
     id: 'roadmap',
     name: '差点路线图',
     desc: '告诉你该练什么能最快降差点',

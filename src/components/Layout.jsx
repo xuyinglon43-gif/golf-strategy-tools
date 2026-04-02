@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import HandicapInput from './HandicapInput'
+import ThemeToggle from './ThemeToggle'
 import './Layout.css'
 
 export default function Layout({ handicap, setHandicap, children }) {
@@ -15,6 +16,7 @@ export default function Layout({ handicap, setHandicap, children }) {
         </Link>
         <div className="topbar-right">
           <HandicapInput handicap={handicap} setHandicap={setHandicap} />
+          <ThemeToggle />
           <Link to="/about" className="about-link">关于</Link>
         </div>
       </header>

@@ -18,7 +18,7 @@ export const stages = [
       { name: '推杆', status: 'core' },
       { name: '3–5铁', status: 'skip' },
       { name: '球道木', status: 'skip' },
-      { name: '其余楔形杆', status: 'later' },
+      { name: '其余挖起杆', status: 'later' },
     ],
     explanation:
       '7支杆足够打完一轮，多了反而添乱。长铁是全套杆里最难打的，职业球员都要练很久，新手拿起来十有八九是地滚或劈叉。球道木同理，从地面打需要极精准的击球点，先不用碰。不是你的问题，是这些杆本来就难。',
@@ -45,12 +45,12 @@ export const stages = [
       { name: '推杆', status: 'core' },
       { name: '4号 Hybrid', status: 'new' },
       { name: '5号 Hybrid', status: 'new' },
-      { name: '52度 Gap Wedge', status: 'new' },
+      { name: '52度', status: 'new' },
       { name: '3–5铁', status: 'skip' },
       { name: '球道木', status: 'skip' },
     ],
     explanation:
-      '把长铁换成 Hybrid 是这个阶段最高回报的一步。Hybrid 杆底更宽、重心更低，打坏了还能飞起来，长铁打坏了就是地滚。Shot Scope 数据显示，这个差点段 Hybrid 的果岭命中率比等效长铁高出约 8%。同时加一根 52度 Gap Wedge，填补 PW（约46度）和56度之间的距离空白，100码以内会顺手很多。',
+      '把长铁换成 Hybrid 是这个阶段最高回报的一步。Hybrid 杆底更宽、重心更低，打坏了还能飞起来，长铁打坏了就是地滚。Shot Scope 数据显示，这个差点段 Hybrid 的果岭命中率比等效长铁高出约 8%。同时加一根52度，填补 PW（约46度）和56度之间的距离空白，100码以内会顺手很多。',
     signals: [
       '开球OB每场少于3个',
       'Hybrid能稳定从球道打干净，不频繁劈叉',
@@ -104,11 +104,11 @@ export const stages = [
       { name: '一号木 Fitting', status: 'new' },
       { name: '7号木', status: 'new' },
       { name: '铁杆 Fitting', status: 'new' },
-      { name: '楔形杆精细化（每4–5度一根）', status: 'new' },
+      { name: '挖起杆精细化（每4–5度一根）', status: 'new' },
       { name: '5号木', status: 'later' },
     ],
     explanation:
-      '到了这个阶段，装备开始真正影响成绩，因为动作已足够稳定，能感受到不同杆的细微差异。最值得做的一件事：专业 Fitting。铁杆杆身硬度、长度、Lie 角对方向的影响是系统性的，Fitting 不一定要换新杆，有时候只是参数调整就能看到变化。楔形杆精细化是这个阶段另一个高回报投资——每根之间差4–5度 loft，100码以内的距离分段会清晰很多。',
+      '到了这个阶段，装备开始真正影响成绩，因为动作已足够稳定，能感受到不同杆的细微差异。最值得做的一件事：专业 Fitting。铁杆杆身硬度、长度、Lie 角对方向的影响是系统性的，Fitting 不一定要换新杆，有时候只是参数调整就能看到变化。挖起杆精细化是这个阶段另一个高回报投资——每根之间差4–5度 loft，100码以内的距离分段会清晰很多。',
     signals: [
       'GIR 果岭命中率超过35%',
       '救球率超过40%',
@@ -133,10 +133,10 @@ export const stages = [
       { name: '推杆', status: 'core' },
       { name: '长铁（可替换部分 Hybrid）', status: 'new' },
       { name: '铁杆肌肉背或刀背', status: 'new' },
-      { name: '楔形杆全套 Fitting + Grind', status: 'new' },
+      { name: '挖起杆全套 Fitting + Grind', status: 'new' },
     ],
     explanation:
-      '这个阶段没有统一答案，配包完全按自己的 Strokes Gained 弱点定制。SG: Approach 是弱点就在进攻距离段想办法；SG: Around the Green 是弱点就细化 Wedge 的 Grind 和 Bounce。铁杆换刀背或肌肉背的前提是击球够稳定，能驾驭更小的容错窗口——盲目换刀背只会让成绩更难看。',
+      '这个阶段没有统一答案，配包完全按自己的 Strokes Gained 弱点定制。SG: Approach 是弱点就在进攻距离段想办法；SG: Around the Green 是弱点就细化挖起杆的 Grind 和 Bounce。铁杆换刀背或肌肉背的前提是击球够稳定，能驾驭更小的容错窗口——盲目换刀背只会让成绩更难看。',
     signals: null,
   },
 ]

@@ -51,7 +51,7 @@ jobs:
             umami:
               image: ghcr.io/umami-software/umami:postgresql-latest
               ports:
-                - "3000:3000"
+                - "3001:3000"
               environment:
                 DATABASE_URL: postgresql://umami:umami_pass_2026@db:5432/umami
                 APP_SECRET: golf-tools-umami-secret-2026
@@ -81,7 +81,7 @@ jobs:
           docker compose down 2>/dev/null || true
           docker compose up -d
 
-          echo "Umami is starting on port 3000..."
+          echo "Umami is starting on port 3001..."
           echo "Default login: admin / umami"
-          echo "Access at http://$HOSTNAME:3000"
+          echo "Access at http://$HOSTNAME:3001"
           SCRIPT

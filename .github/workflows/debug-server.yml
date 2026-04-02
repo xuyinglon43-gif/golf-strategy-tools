@@ -1,0 +1,47 @@
+name: Debug Server
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H $HOST >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Check server status
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          ssh -i ~/.ssh/deploy_key $USER@$HOST 'bash -s' << 'SCRIPT'
+          echo "=== Memory ==="
+          free -h
+          echo ""
+          echo "=== Disk ==="
+          df -h /
+          echo ""
+          echo "=== Docker containers ==="
+          docker ps -a 2>/dev/null || echo "Docker not running"
+          echo ""
+          echo "=== Listening ports ==="
+          ss -tlnp
+          echo ""
+          echo "=== Nginx status ==="
+          systemctl status nginx 2>/dev/null | head -10 || echo "No nginx"
+          echo ""
+          echo "=== iptables DOCKER rules ==="
+          iptables -L -n 2>/dev/null | head -30
+          echo ""
+          echo "=== Web server process ==="
+          ps aux | grep -E 'nginx|httpd|node|pm2' | grep -v grep
+          SCRIPT

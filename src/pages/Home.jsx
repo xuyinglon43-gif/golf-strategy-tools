@@ -69,8 +69,12 @@ export default function Home() {
         <p className="hero-hint">推荐使用电脑学习 · 打球前的策略课，不是下场时的计算器</p>
       </section>
       <section className="tool-grid">
-        {tools.map((tool) => (
-          <div key={tool.id} className={`tool-card ${!tool.available ? 'disabled' : ''}`}>
+        {tools.map((tool, idx) => (
+          <div
+            key={tool.id}
+            className={`tool-card ${!tool.available ? 'disabled' : ''}`}
+            style={{ animationDelay: `${idx * 80}ms` }}
+          >
             <div className="tool-icon">{tool.icon}</div>
             <h3 className="tool-name">{tool.name}</h3>
             <p className="tool-desc">{tool.desc}</p>

@@ -1,43 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap');
+/* 中文兜底字体（非苹果系统时使用）；西文/数字优先走系统 SF Pro */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap');
+
+/* ============================================================
+   设计令牌 —— 苹果风（浅色为默认，跟随系统自动切深色，可手动覆盖）
+   强调色：高尔夫球场绿
+   ============================================================ */
 
 :root,
-[data-theme="dark"] {
-  --bg-dark: #1a1a18;
-  --bg-card: #242422;
-  --border: #333;
-  --text-primary: #e8e6e0;
-  --text-secondary: #999;
-  --accent: #9a7b3c;
-  --accent-hover: #b8932e;
-  --green: #2a7d46;
-  --green-bg: rgba(42, 125, 70, 0.15);
-  --yellow: #b8931a;
-  --yellow-bg: rgba(184, 147, 26, 0.15);
-  --red: #ab2d2d;
-  --red-bg: rgba(171, 45, 45, 0.15);
-  --water: #1a5a8a;
+[data-theme="light"] {
+  /* 中性背景 / 文字 / 边框 */
+  --bg-dark: #f5f5f7;          /* 页面底色（苹果经典浅灰） */
+  --bg-card: #ffffff;          /* 卡片 */
+  --bg-elevated: #ffffff;      /* 浮层 */
+  --bg-subtle: #f0f0f3;        /* 次级填充 */
+  --border: #d8d8de;           /* 1px 分隔线 */
+  --border-strong: #c4c4cc;
+  --text-primary: #1d1d1f;     /* 近黑 */
+  --text-secondary: #6e6e73;   /* 次要灰 */
+
+  /* 强调色：球场绿 */
+  --accent: #2a7d46;
+  --accent-hover: #246b3c;
+  --accent-soft: rgba(42, 125, 70, 0.10);
+
+  /* 语义色（策略安全/谨慎/激进） */
+  --green: #248a3d;
+  --green-bg: rgba(36, 138, 61, 0.10);
+  --yellow: #b8770a;
+  --yellow-bg: rgba(184, 119, 10, 0.12);
+  --red: #c4302b;
+  --red-bg: rgba(196, 48, 43, 0.10);
+  --water: #1a6fb0;
   --bunker: #c4a84a;
-  --radius-card: 14px;
-  --radius-btn: 9px;
-  --radius-input: 11px;
+
+  /* 圆角（苹果偏大而柔和） */
+  --radius-card: 18px;
+  --radius-btn: 12px;
+  --radius-input: 12px;
+  --radius-pill: 980px;
+
+  /* 阴影（柔和、低饱和） */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+  /* 毛玻璃 */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(0, 0, 0, 0.08);
+
+  color-scheme: light;
 }
 
-[data-theme="light"] {
-  --bg-dark: #f5f3ed;
-  --bg-card: #ffffff;
-  --border: #e0ded8;
-  --text-primary: #1a1a18;
-  --text-secondary: #666;
-  --accent: #9a7b3c;
-  --accent-hover: #7a5f2a;
-  --green: #2a7d46;
-  --green-bg: rgba(42, 125, 70, 0.1);
-  --yellow: #b8931a;
-  --yellow-bg: rgba(184, 147, 26, 0.1);
-  --red: #ab2d2d;
-  --red-bg: rgba(171, 45, 45, 0.1);
-  --water: #1a5a8a;
+[data-theme="dark"] {
+  --bg-dark: #000000;          /* 页面底（iOS 纯黑分层） */
+  --bg-card: #1c1c1e;
+  --bg-elevated: #2c2c2e;
+  --bg-subtle: #2c2c2e;
+  --border: #38383a;
+  --border-strong: #48484a;
+  --text-primary: #f5f5f7;
+  --text-secondary: #98989d;
+
+  /* 深色下绿色提亮以保证对比（苹果系统绿） */
+  --accent: #34c759;
+  --accent-hover: #30d158;
+  --accent-soft: rgba(52, 199, 89, 0.16);
+
+  --green: #34c759;
+  --green-bg: rgba(52, 199, 89, 0.16);
+  --yellow: #ffd60a;
+  --yellow-bg: rgba(255, 214, 10, 0.16);
+  --red: #ff453a;
+  --red-bg: rgba(255, 69, 58, 0.16);
+  --water: #0a84ff;
   --bunker: #c4a84a;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+
+  --glass-bg: rgba(28, 28, 30, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.10);
+
+  color-scheme: dark;
 }
 
 * {
@@ -48,14 +93,22 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
-  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Noto Sans SC', sans-serif;
   background: var(--bg-dark);
   color: var(--text-primary);
   min-height: 100vh;
+  min-height: 100dvh;
+  letter-spacing: -0.01em;            /* 苹果西文略收紧字距 */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 @keyframes fadeUp {
@@ -95,21 +148,58 @@ button {
   font-family: inherit;
   border: none;
   background: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-input, select {
+input, select, textarea {
   font-family: inherit;
 }
 
+/* 文本选区高亮走强调色 */
+::selection {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+/* 键盘聚焦无障碍轮廓 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 滚动条：WebKit + Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
+  background: var(--border-strong);
+  border-radius: 980px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+  background-clip: padding-box;
+}
+
+/* 尊重“减少动态效果”系统偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @media print {

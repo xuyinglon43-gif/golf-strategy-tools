@@ -1,14 +1,15 @@
 .handicap-badge {
-  background: var(--bg-card);
+  background: var(--bg-subtle);
   color: var(--accent);
   border: 1px solid var(--border);
-  border-radius: var(--radius-btn);
+  border-radius: var(--radius-pill);
   padding: 5px 14px;
   font-size: 13px;
   font-weight: 500;
-  transition: border-color 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
 .handicap-badge:hover {
+  background: var(--accent-soft);
   border-color: var(--accent);
 }
 .handicap-badge strong {
@@ -35,5 +36,5 @@
   outline: none;
 }
 .handicap-input:focus {
-  box-shadow: 0 0 0 2px rgba(154, 123, 60, 0.3);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }

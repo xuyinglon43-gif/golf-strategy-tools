@@ -9,11 +9,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-dark);
+  border-bottom: 1px solid var(--glass-border);
+  /* 毛玻璃：半透明 + 背景模糊（含 Safari 前缀回退） */
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+/* 浏览器不支持 backdrop-filter 时退回不透明背景 */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .topbar {
+    background: var(--bg-dark);
+  }
 }
 
 .logo {

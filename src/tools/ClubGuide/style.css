@@ -33,7 +33,7 @@
 .club-guide-title {
   font-size: 28px;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent) 0%, #d4a84a 100%);
+  background: linear-gradient(120deg, var(--accent) 0%, #5cc878 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

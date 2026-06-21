@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -8,6 +8,8 @@ import Dispersion from './tools/Dispersion'
 import Putting from './tools/Putting'
 import Expected from './tools/Expected'
 import ClubGuide from './tools/ClubGuide'
+// 案例页用到 recharts，单独懒加载，避免其它页面为图表库买单
+const CaseStudy = lazy(() => import('./tools/CaseStudy'))
 
 function App() {
   const [handicap, setHandicap] = useState(() => {
@@ -30,6 +32,7 @@ function App() {
         <Route path="/putting" element={<Putting handicap={handicap} setHandicap={setHandicap} />} />
         <Route path="/expected" element={<Expected handicap={handicap} setHandicap={setHandicap} />} />
         <Route path="/club-guide" element={<ClubGuide handicap={handicap} setHandicap={setHandicap} />} />
+        <Route path="/case-study" element={<Suspense fallback={null}><CaseStudy /></Suspense>} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Layout>

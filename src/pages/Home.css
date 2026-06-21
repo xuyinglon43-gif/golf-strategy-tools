@@ -65,6 +65,11 @@
 .tool-card.disabled {
   opacity: 0.4;
 }
+.tool-card.featured {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, var(--accent-soft), var(--bg-card) 60%);
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--accent-soft);
+}
 
 .tool-icon {
   font-size: 30px;

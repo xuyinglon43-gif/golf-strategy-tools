@@ -1,0 +1,154 @@
+.cs-page { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+
+/* 顶栏 */
+.cs-topline { display: flex; align-items: center; justify-content: space-between; }
+.cs-back { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
+.cs-back:hover { color: var(--text-primary); }
+.cs-langs { display: inline-flex; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 2px; gap: 2px; }
+.cs-lang { border: none; background: transparent; color: var(--text-secondary); font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: var(--radius-pill); cursor: pointer; transition: all 0.18s; }
+.cs-lang.active { background: var(--bg-card); color: var(--accent); box-shadow: var(--shadow-sm); }
+
+/* Hero */
+.cs-hero { text-align: center; padding: 2px 0 0; }
+.cs-title { font-size: 25px; font-weight: 700; letter-spacing: -0.02em; }
+.cs-sub { color: var(--text-secondary); font-size: 13px; margin-top: 5px; }
+
+/* 筛选 / 控制面板 */
+.cs-filters, .cs-controls {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-card);
+  padding: 14px 16px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 11px;
+}
+.cs-filter-grp, .cs-ctrl-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cs-filter-label, .cs-ctrl-label { font-size: 12px; color: var(--text-secondary); font-weight: 600; flex-shrink: 0; }
+.cs-ctrl-label { width: 100%; margin-bottom: -2px; }
+.cs-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.cs-chip {
+  border: 1px solid var(--border); background: var(--bg-subtle); color: var(--text-secondary);
+  font-size: 13px; font-weight: 500; padding: 5px 11px; border-radius: var(--radius-pill); cursor: pointer; transition: all 0.15s;
+}
+.cs-chip.sm { font-size: 12px; padding: 4px 10px; }
+.cs-chip:hover { border-color: var(--border-strong); }
+.cs-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.cs-dates { display: inline-flex; align-items: center; gap: 6px; }
+.cs-dates input {
+  background: var(--bg-dark); border: 1px solid var(--border); border-radius: var(--radius-input);
+  padding: 5px 8px; color: var(--text-primary); font-size: 12px; outline: none;
+}
+.cs-dates input:focus { border-color: var(--accent); }
+.cs-dates span { color: var(--text-secondary); }
+
+.cs-switch { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); cursor: pointer; }
+.cs-switch input { width: 15px; height: 15px; accent-color: var(--accent); }
+.cs-reset { border: 1px solid var(--border); background: transparent; color: var(--text-secondary); font-size: 13px; padding: 5px 11px; border-radius: var(--radius-pill); cursor: pointer; }
+.cs-reset:hover { color: var(--text-primary); border-color: var(--border-strong); }
+.cs-export { color: var(--accent); border-color: var(--accent); }
+.cs-export:hover { color: var(--accent); background: var(--accent-soft); }
+
+/* 球场多选 */
+.cs-course-select { position: relative; }
+.cs-course-btn { border: 1px solid var(--border); background: var(--bg-subtle); color: var(--text-primary); font-size: 13px; padding: 5px 11px; border-radius: var(--radius-pill); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.cs-course-btn.active { border-color: var(--accent); color: var(--accent); }
+.cs-caret { font-size: 10px; opacity: 0.7; }
+.cs-course-panel { position: absolute; top: calc(100% + 6px); left: 0; z-index: 30; width: 260px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-btn); box-shadow: var(--shadow-lg); padding: 8px; }
+.cs-course-search { width: 100%; box-sizing: border-box; background: var(--bg-dark); border: 1px solid var(--border); border-radius: var(--radius-input); padding: 8px 10px; color: var(--text-primary); font-size: 13px; outline: none; margin-bottom: 6px; }
+.cs-course-search:focus { border-color: var(--accent); }
+.cs-course-list { max-height: 240px; overflow-y: auto; display: flex; flex-direction: column; }
+.cs-course-opt { display: flex; align-items: center; gap: 8px; padding: 6px; border-radius: 8px; cursor: pointer; font-size: 13px; }
+.cs-course-opt:hover { background: var(--bg-subtle); }
+.cs-course-opt input { accent-color: var(--accent); }
+.cs-course-name { flex: 1; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cs-course-n { color: var(--text-secondary); font-size: 12px; }
+.cs-course-clear { width: 100%; margin-top: 6px; border: none; background: var(--bg-subtle); color: var(--text-secondary); font-size: 12px; padding: 7px; border-radius: 8px; cursor: pointer; }
+
+/* KPI */
+.cs-kpis { display: grid; grid-template-columns: repeat(8, 1fr); gap: 9px; }
+.cs-kpi { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-btn); padding: 11px 9px; text-align: center; box-shadow: var(--shadow-sm); }
+.cs-kpi-label { font-size: 11px; color: var(--text-secondary); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cs-kpi-value { font-size: 21px; font-weight: 700; margin-top: 3px; letter-spacing: -0.02em; }
+.cs-kpi-delta { font-size: 11px; font-weight: 600; margin-top: 2px; color: var(--text-secondary); }
+.cs-kpi-delta.good { color: var(--green); }
+.cs-kpi-delta.bad { color: var(--red); }
+
+/* 卡片 */
+.cs-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 16px 18px; box-shadow: var(--shadow-sm); }
+.cs-card-title { font-size: 16px; font-weight: 700; }
+.cs-empty { text-align: center; color: var(--text-secondary); font-size: 14px; padding: 40px 18px; }
+
+.cs-metric-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.cs-chart-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cs-table-toggle { border: none; background: transparent; color: var(--text-primary); font-size: 16px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 0; }
+.cs-table-toggle:hover { color: var(--accent); }
+.cs-tri { font-size: 11px; color: var(--text-secondary); }
+.cs-seg { display: inline-flex; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 2px; gap: 2px; }
+.cs-seg button { border: none; background: transparent; color: var(--text-secondary); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: var(--radius-pill); cursor: pointer; }
+.cs-seg button.active { background: var(--bg-card); color: var(--accent); box-shadow: var(--shadow-sm); }
+
+/* 表格 */
+.cs-table-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+.cs-rows-count { font-size: 12px; color: var(--text-secondary); }
+.cs-table-wrap { overflow: auto; max-height: 560px; border-radius: var(--radius-btn); }
+.cs-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.cs-table thead th { position: sticky; top: 0; background: var(--bg-card); z-index: 1; color: var(--text-secondary); font-weight: 600; font-size: 12px; padding: 8px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--border); }
+.cs-th { cursor: pointer; user-select: none; }
+.cs-th:hover { color: var(--text-primary); }
+.cs-th.active { color: var(--accent); }
+.cs-th.l { text-align: left; }
+.cs-sort-ind { font-size: 9px; margin-left: 3px; }
+.cs-th-link { width: 40px; }
+.cs-table tbody td { padding: 7px 8px; text-align: right; border-bottom: 1px solid var(--border); color: var(--text-primary); white-space: nowrap; }
+.cs-table tbody td.l { text-align: left; }
+.cs-table tbody tr:hover td { background: var(--bg-subtle); }
+.cs-td-course { max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+.cs-table td.num { font-variant-numeric: tabular-nums; }
+.cs-table tfoot td { position: sticky; bottom: 0; background: var(--bg-subtle); font-weight: 700; padding: 8px; text-align: right; border-top: 2px solid var(--border); white-space: nowrap; }
+.cs-table tfoot td.l { text-align: left; color: var(--text-secondary); }
+.cs-link { color: var(--accent); text-decoration: none; font-size: 12px; }
+.cs-link:hover { text-decoration: underline; }
+
+/* 难度分析 */
+.cs-diff { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 4px; }
+.cs-diff-tile { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-btn); padding: 13px 14px; }
+.cs-diff-name { font-size: 13px; color: var(--text-secondary); font-weight: 600; }
+.cs-diff-val { font-size: 23px; font-weight: 700; margin: 5px 0 9px; letter-spacing: -0.02em; }
+.cs-diff-unit { font-size: 12px; color: var(--text-secondary); font-weight: 500; margin-left: 2px; }
+.cs-diff-bar { height: 6px; background: var(--bg-card); border-radius: var(--radius-pill); overflow: hidden; }
+.cs-diff-fill { height: 100%; border-radius: var(--radius-pill); transition: width 0.5s ease; }
+.cs-diff-tile.hard .cs-diff-fill { background: var(--red); }
+.cs-diff-tile.med .cs-diff-fill { background: var(--yellow); }
+.cs-diff-tile.easy .cs-diff-fill { background: var(--green); }
+
+/* 记分卡热力图 */
+.cs-heat-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.cs-heat-legend { display: flex; gap: 10px; flex-wrap: wrap; }
+.cs-leg { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text-secondary); }
+.cs-heat-wrap { margin-top: 10px; max-height: 460px; overflow: auto; display: flex; flex-direction: column; gap: 3px; }
+.cs-heat-row { display: flex; align-items: center; gap: 8px; }
+.cs-heat-date { font-size: 11px; color: var(--text-secondary); width: 76px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.cs-heat-course { font-size: 11px; color: var(--text-secondary); width: 96px; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cs-heat-cells { display: flex; gap: 2px; }
+.cs-heat-total { font-size: 12px; font-weight: 700; width: 30px; text-align: right; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.cs-hc { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 4px; font-size: 10px; font-weight: 600; flex-shrink: 0; }
+i.cs-hc { width: 12px; height: 12px; border-radius: 3px; }
+.cs-hc.eagle { background: var(--water); color: #fff; }
+.cs-hc.birdie { background: var(--green); color: #fff; }
+.cs-hc.par { background: var(--bg-subtle); color: var(--text-secondary); border: 1px solid var(--border); }
+.cs-hc.bogey { background: var(--yellow-bg); color: var(--yellow); }
+.cs-hc.double { background: var(--red-bg); color: var(--red); }
+.cs-hc.triple { background: var(--red); color: #fff; }
+
+.cs-foot { text-align: center; padding: 4px 0 24px; }
+.cs-foot-src { font-size: 12px; color: var(--text-secondary); }
+
+@media (max-width: 860px) { .cs-kpis { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 720px) {
+  .cs-title { font-size: 20px; }
+  .cs-sub { font-size: 12px; }
+  .cs-kpis { grid-template-columns: repeat(2, 1fr); }
+  .cs-kpi-value { font-size: 19px; }
+  .cs-diff { grid-template-columns: 1fr; }
+  .cs-filters, .cs-controls, .cs-card { padding: 13px 13px; }
+  .cs-heat-course { width: 60px; }
+  .cs-heat-date { width: 70px; }
+  .cs-hc { width: 19px; height: 19px; font-size: 9px; }
+}

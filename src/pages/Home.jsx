@@ -3,6 +3,15 @@ import './Home.css'
 
 const tools = [
   {
+    id: 'case-study',
+    name: '高尔夫数据查询站',
+    desc: '自选参数，实时查看一个真实球员的逐场数据',
+    path: '/case-study',
+    available: true,
+    icon: '📊',
+    featured: true,
+  },
+  {
     id: 'gto',
     name: '攻果岭GTO矩阵',
     desc: '告诉你这一杆该不该攻果岭',
@@ -72,7 +81,7 @@ export default function Home() {
         {tools.map((tool, idx) => (
           <div
             key={tool.id}
-            className={`tool-card ${!tool.available ? 'disabled' : ''}`}
+            className={`tool-card ${!tool.available ? 'disabled' : ''} ${tool.featured ? 'featured' : ''}`}
             style={{ animationDelay: `${idx * 80}ms` }}
           >
             <div className="tool-icon">{tool.icon}</div>

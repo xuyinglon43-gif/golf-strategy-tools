@@ -8,7 +8,7 @@ export const LANGS = [
 
 export const t = {
   zh: {
-    title: '高尔夫数据查询站',
+    title: '许多帕数据查询站',
     subtitle: '许多帕的全高尔夫生命周期数据 · 任意维度 × 多指标叠加 · 逐洞级细颗粒',
     back: '← 返回',
 
@@ -56,7 +56,7 @@ export const t = {
   },
 
   ko: {
-    title: '골프 데이터 조회 스테이션',
+    title: '许多帕 데이터 조회 스테이션',
     subtitle: '许多帕의 골프 라이프사이클 데이터 · 임의 차원 × 다중 지표 · 홀 단위 정밀',
     back: '← 뒤로',
 
@@ -104,7 +104,7 @@ export const t = {
   },
 
   en: {
-    title: 'Golf Data Explorer',
+    title: 'Xu Duopa’s Data Explorer',
     subtitle: 'Xu Duopa’s full-lifecycle golf data · any dimension × stacked metrics · hole-level',
     back: '← Back',
 

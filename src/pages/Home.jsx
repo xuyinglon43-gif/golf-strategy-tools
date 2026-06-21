@@ -3,15 +3,6 @@ import './Home.css'
 
 const tools = [
   {
-    id: 'case-study',
-    name: '高尔夫数据查询站',
-    desc: '自选参数，实时查看一个真实球员的逐场数据',
-    path: '/case-study',
-    available: true,
-    icon: '📊',
-    featured: true,
-  },
-  {
     id: 'gto',
     name: '攻果岭GTO矩阵',
     desc: '告诉你这一杆该不该攻果岭',
@@ -66,6 +57,14 @@ const tools = [
     path: null,
     available: false,
     icon: '⚖️',
+  },
+  {
+    id: 'case-study',
+    name: '许多帕数据查询站',
+    desc: '自选参数，实时查看一个真实球员的逐场数据',
+    path: '/case-study',
+    available: true,
+    icon: '📊',
   },
 ]
 
